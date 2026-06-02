@@ -34,7 +34,7 @@
 {% block field_hint %}
     {% set block_field_hint_name = 'field_hint_'~fieldMapping.type %}
     {% if block(block_field_hint_name) is defined %}
-        {{ block(block_field_hint_name)|spaceless }}
+        {{ block(block_field_hint_name)|trim }}
     {% elseif types|length > 0 %}
         {% set field_hints = [] %}
 
@@ -66,7 +66,7 @@
 {% endblock %}
 
 {% block field_set %}
-    public function {{ methodName }}({{ (block('field_hint')|spaceless) ? block('field_hint')|spaceless ~ ' ' : '' }}${{ variableName }}): self
+    public function {{ methodName }}({{ (block('field_hint')|trim) ? block('field_hint')|trim ~ ' ' : '' }}${{ variableName }}): self
     {
         $this->{{ fieldName }} = ${{ variableName }};
 
@@ -75,7 +75,7 @@
 {% endblock %}
 
 {% block field_get %}
-    public function {{ methodName }}(){{ (block('field_hint')|spaceless) ? ': ' ~  block('field_hint')|spaceless : '' }}
+    public function {{ methodName }}(){{ (block('field_hint')|trim) ? ': ' ~  block('field_hint')|trim : '' }}
     {
         return $this->{{ fieldName }};
     }
