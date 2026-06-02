@@ -30,7 +30,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('template')
+                ->scalarNode('template') // @legacy SF < 7.2 (string node introduced in Symfony 7.2)
                     ->defaultValue('@EcommitDoctrineEntitiesGenerator/Theme/base.php.twig')
                     ->validate()
                         ->ifTrue(static fn (mixed $value) => !\is_string($value))
