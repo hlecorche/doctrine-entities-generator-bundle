@@ -101,6 +101,9 @@ class EntitySearcherTest extends KernelTestCase
         $this->assertSame($expectedResult, $result);
     }
 
+    /**
+     * @return array<array{string, bool}>
+     */
     public static function getTestInputMatchesClassProvider(): array
     {
         return [
@@ -156,6 +159,9 @@ class EntitySearcherTest extends KernelTestCase
         $this->assertSame($expectedResult, $result);
     }
 
+    /**
+     * @return array<array{class-string, bool}>
+     */
     public static function getTestClassCanBeGeneratedProvider(): array
     {
         return [
@@ -183,6 +189,9 @@ class EntitySearcherTest extends KernelTestCase
         ];
     }
 
+    /**
+     * @param array<class-string> $expectedResult
+     */
     #[DataProvider('getTestProvider')]
     public function testSearchInManager(string $input, array $expectedResult): void
     {
@@ -194,7 +203,7 @@ class EntitySearcherTest extends KernelTestCase
         $reflectionClass = new \ReflectionClass(EntitySearcher::class);
         $method = $reflectionClass->getMethod('searchInManager');
         $method->setAccessible(true);
-        /** @var array $result */
+        /** @var array<class-string> $result */
         $result = $method->invokeArgs($entitySearcher, [
             $manager,
             $input,
@@ -205,6 +214,9 @@ class EntitySearcherTest extends KernelTestCase
         $this->assertSame($expectedResult, $result);
     }
 
+    /**
+     * @return array<array{string, array<class-string>}>
+     */
     public static function getTestProvider(): array
     {
         $data = [];
@@ -311,6 +323,9 @@ class EntitySearcherTest extends KernelTestCase
         return $data;
     }
 
+    /**
+     * @param array<class-string> $expectedResult
+     */
     #[DataProvider('getTestProvider')]
     public function testSearch(string $input, array $expectedResult): void
     {

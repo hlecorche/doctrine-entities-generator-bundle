@@ -103,6 +103,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $this->assertSame(file_get_contents(__DIR__.'/../fixtures/getFileParts/'.$fixturesDir.'/afterBlock.txt'), $result['afterBlock']);
     }
 
+    /**
+     * @return array<array{class-string, string}>
+     */
     public static function getTestGetFilePartsValidProvider(): array
     {
         return [
@@ -129,6 +132,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $method->invokeArgs($entityGenerator, [new \ReflectionClass(Author::class)]);
     }
 
+    /**
+     * @return array<array{string}>
+     */
     public static function getTestGetFilePartsTagNotFoundProvider(): array
     {
         return [
@@ -161,6 +167,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $entityManager->generate($class);
     }
 
+    /**
+     * @return array<array{class-string}>
+     */
     public static function getTestGenerateClassNotManagedProvider(): array
     {
         return [
@@ -183,6 +192,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $entityManager->generate($class);
     }
 
+    /**
+     * @return array<array{class-string}>
+     */
     public static function getTestGenerateClassIgnoreProvider(): array
     {
         return [
@@ -215,6 +227,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $this->assertSame($expectedResult, $result);
     }
 
+    /**
+     * @return array<array{class-string, string, bool}>
+     */
     public static function getTestPropertyIsDefinedInClassFileProvider(): array
     {
         return [
@@ -268,6 +283,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $this->assertSame($expectedResult, $result);
     }
 
+    /**
+     * @return array<array{class-string, string, bool}>
+     */
     public static function getTestMethodIsDefinedOutsideBlockProvider(): array
     {
         return [
@@ -291,6 +309,9 @@ class EntityGeneratorTest extends AbstractTestCase
         ];
     }
 
+    /**
+     * @param EntityGenerator::TYPE_* $type
+     */
     #[DataProvider('getTestBuildMethodNameProdiver')]
     public function testBuildMethodName(string $type, string $fieldName, string $expectedResult): void
     {
@@ -303,6 +324,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $this->assertSame($expectedResult, $result);
     }
 
+    /**
+     * @return array<array{EntityGenerator::TYPE_*, string, string}>
+     */
     public static function getTestBuildMethodNameProdiver(): array
     {
         return [
@@ -328,6 +352,9 @@ class EntityGeneratorTest extends AbstractTestCase
         ];
     }
 
+    /**
+     * @param EntityGenerator::TYPE_* $type
+     */
     #[DataProvider('getTestBuildVariableNameProvider')]
     public function testBuildVariableName(string $type, string $variableName, string $expectedResult): void
     {
@@ -340,6 +367,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $this->assertSame($expectedResult, $result);
     }
 
+    /**
+     * @return array<array{EntityGenerator::TYPE_*, string, string}>
+     */
     public static function getTestBuildVariableNameProvider(): array
     {
         return [
@@ -379,6 +409,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $this->checkGeneratedClass($class, $folder);
     }
 
+    /**
+     * @return array<array{0: class-string, 1?: ?string}>
+     */
     public static function getTestGenerateProvider(): array
     {
         /**
@@ -426,6 +459,9 @@ class EntityGeneratorTest extends AbstractTestCase
         $entityManager->generate($class);
     }
 
+    /**
+     * @return array<array{class-string}>
+     */
     public static function getTestGenerateEntityInitializerInterfaceNotUsedExceptionProdiver(): array
     {
         return [

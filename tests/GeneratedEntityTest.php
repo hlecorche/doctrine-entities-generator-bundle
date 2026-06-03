@@ -164,6 +164,9 @@ class GeneratedEntityTest extends KernelTestCase
         $this->assertNull($subClass->$getter());
     }
 
+    /**
+     * @return array<array{string, string}>
+     */
     public static function getTestSetNullFieldProvider(): array
     {
         return [

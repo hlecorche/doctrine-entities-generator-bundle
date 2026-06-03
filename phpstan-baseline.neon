@@ -8,7 +8,9 @@ parameters:
         - '#is never read, only written#'
         -
             message: '#no value type specified in iterable type array#'
-            path: tests/
+            paths:
+                - tests/App/Entity
+                - tests/App/GeneratedEntity
         -
             message: '#Cannot call method.+(null|false)#'
             path: tests/GeneratedEntityTest.php

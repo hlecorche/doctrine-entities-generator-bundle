@@ -30,6 +30,9 @@ class PhpDocPropertyTypeExtractorTest extends TestCase
         $this->assertSame($expected, (new PhpDocPropertyTypeExtractor())->getPropertyPhpDocVarType($reflectionMethod));
     }
 
+    /**
+     * @return array<array{class-string, string, ?string}>
+     */
     public static function getGetPropertyPhpDocVarTypeProvider(): array
     {
         return [

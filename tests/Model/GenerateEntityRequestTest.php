@@ -33,6 +33,9 @@ class GenerateEntityRequestTest extends TestCase
         $this->assertSame($expected, $request->is($object, $class));
     }
 
+    /**
+     * @return array<array{?object, class-string, bool}>
+     */
     public static function getTestIsProvider(): array
     {
         return [
