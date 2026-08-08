@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\GeneratedEntity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\GeneratedEntity\Foo\Foo;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Sub\EnumInt;
@@ -39,9 +41,20 @@ class WithNotNull
     #[ORM\JoinColumn(name: 'foo_id', referencedColumnName: 'foo_id', nullable: true)]
     protected Foo $toOneUnidirectional;
 
+    /**
+     * @var Collection<int, WithNotNullRelation>
+     */
+    #[ORM\OneToMany(targetEntity: 'Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\GeneratedEntity\WithNotNullRelation', mappedBy: 'withNotNull')]
+    protected Collection $relations;
+
     /*
      * Getters / Setters (auto-generated)
      */
+
+    public function __construct()
+    {
+        $this->relations = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -82,6 +95,33 @@ class WithNotNull
     public function getToOneUnidirectional(): Foo
     {
         return $this->toOneUnidirectional;
+    }
+
+    public function addRelation(WithNotNullRelation $relation): self
+    {
+        $relation->setWithNotNull($this);
+        if (!$this->relations->contains($relation)) {
+            $this->relations[] = $relation;
+        }
+
+        return $this;
+    }
+
+    public function removeRelation(WithNotNullRelation $relation): self
+    {
+        if ($this->relations->contains($relation)) {
+            $this->relations->removeElement($relation);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, WithNotNullRelation>
+     */
+    public function getRelations(): Collection
+    {
+        return $this->relations;
     }
 
     public function setAddress(Address $address): self

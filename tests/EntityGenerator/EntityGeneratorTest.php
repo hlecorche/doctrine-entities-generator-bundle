@@ -47,6 +47,7 @@ use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\Sale;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\SubClass;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithEnum;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithNotNull;
+use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithNotNullRelation;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithOnlyPublic;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithPhpDoc;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -437,6 +438,7 @@ class EntityGeneratorTest extends AbstractTestCase
             [Bar::class],
             [WithEnum::class],
             [WithNotNull::class],
+            [WithNotNullRelation::class],
             [WithOnlyPublic::class],
             [WithoutType::class],
             [WithoutTypeRelation::class],

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\Foo\Foo;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Sub\EnumInt;
@@ -38,6 +39,12 @@ class WithNotNull
     #[ORM\OneToOne(targetEntity: 'Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\Foo\Foo')]
     #[ORM\JoinColumn(name: 'foo_id', referencedColumnName: 'foo_id', nullable: true)]
     protected Foo $toOneUnidirectional;
+
+    /**
+     * @var Collection<int, WithNotNullRelation>
+     */
+    #[ORM\OneToMany(targetEntity: 'Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithNotNullRelation', mappedBy: 'withNotNull')]
+    protected Collection $relations;
 
     /*
      * Getters / Setters (auto-generated)

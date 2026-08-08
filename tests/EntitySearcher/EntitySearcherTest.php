@@ -37,6 +37,7 @@ use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\Sale;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\SubClass;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithEnum;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithNotNull;
+use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithNotNullRelation;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithOnlyPublic;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithPhpDoc;
 use Ecommit\DoctrineEntitiesGeneratorBundle\Tests\RestoreExceptionHandlerTrait;
@@ -185,6 +186,7 @@ class EntitySearcherTest extends KernelTestCase
             [WithEnum::class, true],
             [WithOnlyPublic::class, true],
             [WithNotNull::class, true],
+            [WithNotNullRelation::class, true],
             [WithPhpDoc::class, true],
         ];
     }
@@ -264,6 +266,7 @@ class EntitySearcherTest extends KernelTestCase
             SubClass::class,
             WithEnum::class,
             WithNotNull::class,
+            WithNotNullRelation::class,
             WithOnlyPublic::class,
             WithPhpDoc::class,
         ]];
@@ -290,6 +293,7 @@ class EntitySearcherTest extends KernelTestCase
             SubClass::class,
             WithEnum::class,
             WithNotNull::class,
+            WithNotNullRelation::class,
             WithOnlyPublic::class,
             WithPhpDoc::class,
         ]];
@@ -316,6 +320,7 @@ class EntitySearcherTest extends KernelTestCase
             SubClass::class,
             WithEnum::class,
             WithNotNull::class,
+            WithNotNullRelation::class,
             WithOnlyPublic::class,
             WithPhpDoc::class,
         ]];

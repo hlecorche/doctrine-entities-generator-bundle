@@ -235,7 +235,7 @@
     {%~ if request.isNullable(reflectionTargetProperty) %}
         } elseif (null !== ${{ variableName }}) {
             ${{ variableName }}->{{ foreignMethodName }}($this);
-    {%- endif ~%}
+    {%~ endif %}
         }
         $this->{{ fieldName }} = ${{ variableName }};
 
@@ -310,7 +310,7 @@
         }
         {%~ if request.isNullable(reflectionTargetProperty)  %}
         ${{ variableName }}->{{ foreignMethodName }}(null);
-        {%- endif ~%}
+        {%~ endif %}
 
         return $this;
     }
