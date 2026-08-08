@@ -41,6 +41,10 @@ class WithNotNull
     #[ORM\JoinColumn(name: 'foo_id', referencedColumnName: 'foo_id', nullable: true)]
     protected Foo $toOneUnidirectional;
 
+    #[ORM\OneToOne(targetEntity: 'Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\GeneratedEntity\WithNotNullRelation', inversedBy: 'toOneReverse')]
+    #[ORM\JoinColumn(name: 'to_one_owning_id', referencedColumnName: 'id', nullable: true)]
+    protected WithNotNullRelation $toOneOwning;
+
     /**
      * @var Collection<int, WithNotNullRelation>
      */
@@ -95,6 +99,18 @@ class WithNotNull
     public function getToOneUnidirectional(): Foo
     {
         return $this->toOneUnidirectional;
+    }
+
+    public function setToOneOwning(WithNotNullRelation $toOneOwning): self
+    {
+        $this->toOneOwning = $toOneOwning;
+
+        return $this;
+    }
+
+    public function getToOneOwning(): WithNotNullRelation
+    {
+        return $this->toOneOwning;
     }
 
     public function addRelation(WithNotNullRelation $relation): self

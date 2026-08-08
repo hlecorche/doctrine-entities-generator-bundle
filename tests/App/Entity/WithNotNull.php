@@ -40,6 +40,10 @@ class WithNotNull
     #[ORM\JoinColumn(name: 'foo_id', referencedColumnName: 'foo_id', nullable: true)]
     protected Foo $toOneUnidirectional;
 
+    #[ORM\OneToOne(targetEntity: 'Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\Entity\WithNotNullRelation', inversedBy: 'toOneReverse')]
+    #[ORM\JoinColumn(name: 'to_one_owning_id', referencedColumnName: 'id', nullable: true)]
+    protected WithNotNullRelation $toOneOwning;
+
     /**
      * @var Collection<int, WithNotNullRelation>
      */

@@ -230,12 +230,14 @@
     public function {{ methodName }}(?{{ request.useStatementManipulator.addUseStatementIfNecessary(targetEntity) }} ${{ variableName }}): self
     {%- endif ~%}
     {
+    {%~ if request.isNullable(reflectionTargetProperty) %}
         if (null === ${{ variableName }} && null !== $this->{{ fieldName }}) {
             $this->{{ fieldName }}->{{ foreignMethodName }}(null);
-    {%~ if request.isNullable(reflectionTargetProperty) %}
         } elseif (null !== ${{ variableName }}) {
-            ${{ variableName }}->{{ foreignMethodName }}($this);
+    {%~ else %}
+        if (null !== ${{ variableName }}) {
     {%~ endif %}
+            ${{ variableName }}->{{ foreignMethodName }}($this);
         }
         $this->{{ fieldName }} = ${{ variableName }};
 

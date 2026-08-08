@@ -28,6 +28,9 @@ class WithNotNullRelation
     #[ORM\JoinColumn(name: 'with_not_null_id', referencedColumnName: 'id', nullable: true)]
     protected WithNotNull $withNotNull;
 
+    #[ORM\OneToOne(targetEntity: 'Ecommit\DoctrineEntitiesGeneratorBundle\Tests\App\GeneratedEntity\WithNotNull', mappedBy: 'toOneOwning')]
+    protected ?WithNotNull $toOneReverse = null;
+
     /*
      * Getters / Setters (auto-generated)
      */
@@ -47,5 +50,20 @@ class WithNotNullRelation
     public function getWithNotNull(): WithNotNull
     {
         return $this->withNotNull;
+    }
+
+    public function setToOneReverse(?WithNotNull $toOneReverse): self
+    {
+        if (null !== $toOneReverse) {
+            $toOneReverse->setToOneOwning($this);
+        }
+        $this->toOneReverse = $toOneReverse;
+
+        return $this;
+    }
+
+    public function getToOneReverse(): ?WithNotNull
+    {
+        return $this->toOneReverse;
     }
 }
