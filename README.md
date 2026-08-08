@@ -7,13 +7,6 @@ methods for Doctrine ORM entities.
 ![Tests](https://github.com/e-commit/doctrine-entities-generator-bundle/workflows/Tests/badge.svg)
 
 
-| Bundle version | Compatible with Doctrine ORM |
-|----------------|------------------------------|
-| 3.\*, 4.\*     | ≥ 3.2 ; < 4.0                |
-| 2.\*           | ≥ 2.7 ; < 3.0                |
-
-
-
 ## Installation ##
 
 Install the bundle with Composer : In your project directory, execute the following command :
